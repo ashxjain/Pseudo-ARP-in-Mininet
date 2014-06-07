@@ -24,25 +24,26 @@ System architecture
 
 Pseudo code
 ------------
-For each packet from the switch:
-  1) Use source address and switch port to update address/port table and IP/MAC table
-  2) Is destination broadcast?
-     Yes:
-        2a) Look for MAC address for the IP address in IP/MAC table
-		    2.1) Found:
-		    	 Instruct switch to send ARP response that ARP request
-		    2.2) Not Found:
-				 Flood the packet
-  3) Port for destination address in our address/port table?
-     No:
-        3a) Flood the packet
-            DONE
-  4) Is output port the same as input port?
-     Yes:
-        4a) Drop packet and similar ones for a while
-  5) Install flow table entry in the switch so that this
-     flow goes out the appropriate port
-     5a) Send the packet out appropriate port
+
+	For each packet from the switch:
+	  1) Use source address and switch port to update address/port table and IP/MAC table
+	  2) Is destination broadcast?
+	     Yes:
+	        2a) Look for MAC address for the IP address in IP/MAC table
+			    2.1) Found:
+			    	 Instruct switch to send ARP response that ARP request
+			    2.2) Not Found:
+					 Flood the packet
+	  3) Port for destination address in our address/port table?
+	     No:
+	        3a) Flood the packet
+	            DONE
+	  4) Is output port the same as input port?
+	     Yes:
+	        4a) Drop packet and similar ones for a while
+	  5) Install flow table entry in the switch so that this
+	     flow goes out the appropriate port
+	     5a) Send the packet out appropriate port
 
 Results Discussion
 ------------------
