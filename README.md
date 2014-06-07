@@ -1,8 +1,8 @@
-Pseudo-ARP-in-Mininet
+##Pseudo-ARP-in-Mininet
 =====================
 
 * This is a research project based on the following sigcomm paper:
-  "PortLand: A Scalable Fault-Tolerant Layer 2, Data Center Network Fabric, University of California San Diego"
+	**PortLand: A Scalable Fault-Tolerant Layer 2, Data Center Network Fabric, University of California San Diego**
 * There are many issues faced in data center technology like fault tolerance and efficiency, which can be overcome by leveraging knowledge about the baseline topology and avoiding broadcast-based routing protocols altogether. We take the approach of SDN in solving these issues. Software Defined Networking (SDN) is an approach to computer networking which allows network administrators to manage network services through abstraction of lower level functionality. To implement SDN we use openflow protocol for the control plane to communicate with the data plane.
 
 * Design requirements of common data centers are easy migration of VMs, minimal switch configuration, efficient communication along forwarding paths, no forwarding loops and fast and effective failure detection. With scaling data centers, there come problems in achieving these requirements. Hence there is a need for a large, layer 2 topology. Such a topology is plug and play and requires minimal configuration.
@@ -16,13 +16,13 @@ SDN helps to solve many of these problems.
 
 * This project is at its initial phase, final implementation is not yet done. In this initial phase, I have implemented proxy ARP feature to avoid unnecessary broadcasting. 
 
-System architecture
+#System architecture
 -------------------
-* Mininet -Mininet creates a realistic virtual network, running real kernel, switch and application code, on a single machine (VM, cloud or native), in seconds, with a single command
-* POX - POX is a networking software platform written in Python. POX started as an OpenFlow controller, but can now also function as an OpenFlow switch, and can be useful for writing networking software in general.
-* Wireshark - Wireshark is a network protocol analyzer for Unix and Windows. 
+* **Mininet** -Mininet creates a realistic virtual network, running real kernel, switch and application code, on a single machine (VM, cloud or native), in seconds, with a single command
+* **POX** - POX is a networking software platform written in Python. POX started as an OpenFlow controller, but can now also function as an OpenFlow switch, and can be useful for writing networking software in general.
+* **Wireshark** - Wireshark is a network protocol analyzer for Unix and Windows. 
 
-Pseudo code
+#Pseudo code
 ------------
 
 	For each packet from the switch:
@@ -48,11 +48,11 @@ Pseudo code
 Results Discussion
 ------------------
 * Considering a tree network topology with a depth of 2 and fanout of 2. 
-* Normal l2_learning switch: This code comes with POX
+* **Normal l2_learning switch**: This code comes with POX
   * h1 ping -c 2 h4:
   * h2 ping -c 4 h4
 * For  h2, there is unnecessary flooding of packet, since that MAC address is known to controller, this happened because the ARP request h2 sends contains destination MAC address as broadcast address.
-* Optimized L2_learning switch: l2_learning.py code in POX is modified based on the above algorithm
+* **Optimized L2_learning switch**: l2_learning.py code in POX is modified based on the above algorithm
   * h1 ping -c 2 h4
   * h2 ping -c 4 h4
 * Unnecessary flooding of packet is removed by maintaining an IP to MAC table, hence when the destination MAC address of the ARP request packet is broadcast address, if that destination IP address is in the IP to MAC table, then controller instructs switch to send an ARP response to the request. 
