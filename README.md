@@ -1,4 +1,4 @@
-##Pseudo-ARP-in-Mininet
+Pseudo-ARP-in-Mininet
 =====================
 
 * This is a research project based on the following sigcomm paper:
@@ -16,13 +16,13 @@ SDN helps to solve many of these problems.
 
 * This project is at its initial phase, final implementation is not yet done. In this initial phase, I have implemented proxy ARP feature to avoid unnecessary broadcasting. 
 
-#System architecture
+System architecture
 -------------------
 * **Mininet** -Mininet creates a realistic virtual network, running real kernel, switch and application code, on a single machine (VM, cloud or native), in seconds, with a single command
 * **POX** - POX is a networking software platform written in Python. POX started as an OpenFlow controller, but can now also function as an OpenFlow switch, and can be useful for writing networking software in general.
 * **Wireshark** - Wireshark is a network protocol analyzer for Unix and Windows. 
 
-#Pseudo code
+Pseudo code
 ------------
 
 	For each packet from the switch:
@@ -69,11 +69,11 @@ Since I’m new to this field of networking, it took me a while to just understa
 
 Bibliography
 ---------------
-* Online resources:
+* **Online resources**:
   * https://github.com/mininet/mininet/wiki/Introduction-to-Mininet
   * https://github.com/noxrepo/pox
   * http://yuba.stanford.edu/cs244wiki/index.php/Overview
   * http://archive.openflow.org/wk/index.php/OpenFlow_Tutorial
-* Technical papers:
+* **Technical papers**:
   * Portland: A Scalable Fault-Tolerant Layer 2, Data Center Network Fabric, University of California San Diego
 
